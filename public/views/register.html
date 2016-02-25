@@ -1,0 +1,78 @@
+
+<div class="alert alert-block alert-danger" ng-show="uc.error.isError">
+    <a class="close" data-dismiss="alert" href="#">x</a>
+    <h4 class="alert-heading"><i class="fa fa-check-square-o"></i>
+        Check validation!
+    </h4>
+    <p>
+        <%uc.error.msg%>
+    </p>
+</div>
+
+<div class="alert alert-block alert-warning" ng-show="uc.error.status">
+    <a class="close" data-dismiss="alert" href="#">x</a>
+    <h4 class="alert-heading"><i class="fa fa-check-square-o"></i>
+        You have successfully registered in this website
+    </h4>
+    <p>
+        <%uc.error.msg%> .<a href="/login">click here to login</a>
+    </p>
+</div>
+
+<form class="form-light padding-15 register" name="frmUser"
+      class="form-horizontal" novalidate="">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control has-error" id="name" name="name" placeholder="Name"
+                       ng-model="uc.user.name" ng-required="true" value="<%uc.user.name%>">
+                <span class="help-inline" ng-show="frmUser.name.$invalid && frmUser.name.$touched">Name is required</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" value="<%uc.user.email%>"
+                       ng-model="uc.user.email" name="email" data-name="email" ng-required="true">
+                <span class="help-inline" ng-show="frmUser.email.$invalid && frmUser.email.$touched">Email field is required</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" value="<%uc.user.password%>"
+                       ng-model="uc.user.password" name="password" data-name="password" ng-required="true">
+                <span class="help-inline" ng-show="frmUser.password.$invalid && frmUser.password.$touched">Password is required</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="pass2">Confirm password</label>
+                <input type="password" class="form-control" id="pass2" placeholder="Confirm Password" value="<%uc.user.conpassword%>"
+                       ng-model="uc.user.conpassword" name="conpass" data-name="confirm password">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label class="checkbox persistent"><input type="checkbox" name="terms" ng-required="true"
+                                                      data-name="terms" id="terms"> I accept
+                the <a href="terms.html">terms and conditions of this
+                    website.</a></label>
+            <span class="help-inline" ng-show="frmUser.terms.$invalid && frmUser.terms.$touched">Terms and condition is required</span>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-two pull-right btnRegister" type="button"
+                    ng-disabled="frmUser.$invalid" ng-click="uc.actions.save(modalstate, id)">Register
+            </button>
+        </div>
+    </div>
+</form>
+
