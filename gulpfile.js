@@ -4,7 +4,11 @@ assets = {
    css: {
       files: ['global.css', 'bootstrap.min.css'],
       from: 'public/css',
-      to:   'public/build/css/all.css'
+      to:   'public/build/css/all.css',
+      admfiles:['admin.css'],
+      admfrom:'public/css',
+      admto:'public/build/css/admin.css',
+
    },
    js:{
       vendor: {
@@ -26,12 +30,14 @@ assets = {
            to:    'public/build/js/scripts.js'
       },
       controllers:{
-           files: ['UserController.js'],
+           files: ['UserController.js',
+                   'LoginController.js'
+                  ],
            from:  'public/js/controllers',
            to:    'public/build/js/controllers.js'
       },
       services:{
-           files:  [],
+           files:  ['LoginServices.js'],
            from:   'public/js/services',
            to:     'public/build/js/services.js'
       }
@@ -48,5 +54,6 @@ elixir(function(mix) {
        .styles(assets.js.vendor.files, assets.js.vendor.to, assets.js.vendor.from)
        .styles(assets.js.scripts.files, assets.js.scripts.to, assets.js.scripts.from)
        .styles(assets.js.controllers.files, assets.js.controllers.to, assets.js.controllers.from)
-       //.styles(assets.js.services.files, assets.js.services.to, assets.js.services.from);
+       .styles(assets.js.services.files, assets.js.services.to, assets.js.services.from)
+       .styles(assets.css.admfiles, assets.css.admto, assets.css.admfrom);
 });

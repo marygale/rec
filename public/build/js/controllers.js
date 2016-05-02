@@ -121,4 +121,33 @@ app.controller('UserController',
             }
         }
 })
+app.controller('LoginController',
+    function($scope, $http, LoginServices, HOSTNAME){
+        var vm = this;
+
+        vm.user = {
+            email : '',
+            password: '',
+        };
+        vm.actions ={
+
+            save: function(){
+                LoginServices
+                    /*.login($.param(vm.user))*/
+                    .login(vm.user)
+                    .success(function(response){
+                        console.log(response);
+                    });
+                /*var url = HOSTNAME + 'users/login';
+                $http({
+                    method: "POST",
+                    url: url,
+                    data: $.param(vm.user),
+                    headers : {'Content-Type': 'application/x-www-form-urlencoded' },
+                }).success(function(response){
+                    console.log(response);
+                })*/
+            }
+        }
+    });
 //# sourceMappingURL=controllers.js.map
