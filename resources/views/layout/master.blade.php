@@ -1,6 +1,7 @@
 <html ng-app="recApp">
 <head>
-    <title>Real Estate</title>
+    <title>@yield('title') &lsaquo; REC</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link type="text/css" href="{{asset('build/css/all.css')}}" rel="stylesheet">
 </head>
 <body>
@@ -14,8 +15,8 @@
                 </span>
                     <nav class="top-header-menu">
                         <ul class="menu">
-                            <li><a href="/login">Login</a></li>
-                            <li><a href="/register">Register</a></li>
+                            <li><a href="/users/login">Login</a></li>
+                            <li><a href="/users/register">Register</a></li>
                             {{--<li><a href="/register" ng-show="currentUser == null">Login</a></li>
                             <li class="aux-languages dropdown animate-hover" data-animate="animated fadeInUp" ng-show="currentUser != null"><a href="#">Welcome </a>
                                 <ul id="auxLanguages" class="sub-menu animate-wr animated fadeInUp">
@@ -42,7 +43,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="/" title="Boomerang | One template. Infinite solutions">
-                        <img src="images/boomerang-logo-dark.png" alt="Boomerang | One template. Infinite solutions">
+                        <img src="{{asset('images/boomerang-logo-dark.png')}}" alt="Boomerang | One template. Infinite solutions">
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">
@@ -73,23 +74,25 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>
-                        @if(!empty($aData['pagename']))
+                       {{-- @if(!empty($aData['pagename']))
                             {!!$aData['pagename']!!}
-                        @endif
+                        @endif--}}
 
                     </h2>
                 </div>
+                {{--@if($aData['pagename'] != 'Home')--}}
                 <div class="col-md-6">
                     <ol class="breadcrumb">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Pages</a></li>
                         <li class="active">
-                            @if(!empty($aData['pagename']))
+                            {{--@if(!empty($aData['pagename']))
                                 {!!$aData['pagename']!!}
-                            @endif
+                            @endif--}}
                         </li>
                     </ol>
                 </div>
+                {{--@endif--}}
 
             </div>
         </div>
@@ -172,13 +175,13 @@
 
 </div>
 
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/vendors/angular.js"></script>
+<script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/vendors/angular.js')}}"></script>
 <script src="{{ asset('build/js/vendors.min.js') }}"></script>
 <script src="{{ asset('build/js/scripts.js') }}"></script>
 <script src="{{ asset('build/js/controllers.js') }}"></script>
-{{--<script src="{{ asset('build/js/services.js') }}"></script>--}}
-<script type="text/javascript" src="js/modernizr.custom.js"></script>
-<script type="text/javascript" src="js/jquery.wp.custom.js"></script>
+<script src="{{ asset('build/js/services.js') }}"></script>
+<script type="text/javascript" src="{{asset('js/modernizr.custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery.wp.custom.js')}}"></script>
 </body>
 </html>
